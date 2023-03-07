@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
+// ignore_for_file: non_constant_identifier_names, prefer_const_constructors
 
+import 'package:flutter/material.dart';
 
 class MyWidget extends StatefulWidget {
   const MyWidget({super.key});
@@ -8,99 +9,77 @@ class MyWidget extends StatefulWidget {
   State<MyWidget> createState() => _MyWidgetState();
 }
 
-class _MyWidgetState extends State<MyWidget> {
-  String groupSimple = "";
-  bool isChecked = false;
+String groupName = "";
+bool Checked = false;
 
+class _MyWidgetState extends State<MyWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("MyWidget"),
-      ),
-      body: Column(children: [
-        Text("TexFormField #1 Simple TextFormField"),
-        TextFormField(),
-        Text("TexFormField #2 KeyboardType and Password"),
-        TextFormField(
-          obscureText: true,
+        appBar: AppBar(
+          title: Text("Input Widgets"),
         ),
-        const TextField(
-          decoration: InputDecoration(
-            prefixIcon: Icon(Icons.email),
-            labelText: "This is LabelText",
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Color.fromARGB(255, 9, 181, 219),
+        body: Column(
+          children: [
+            Text("TextFormField #1 Simple Text"),
+            TextFormField(),
+            Text("TextFormField #2 Simple Password"),
+            TextFormField(
+              obscureText: true,
+            ),
+            Text("TextFormField #3 Decoration"),
+            TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'This is labelText',
+                prefixIcon: Icon(Icons.mail),
               ),
             ),
-          ),
-        ),
-        Text("RadioListTile #1 Simple "),
-        RadioListTile(
-          activeColor: Color.fromARGB(255, 232, 127, 16),
-          title: Text(' title 1'),
-          controlAffinity: ListTileControlAffinity.platform,
-          
-          value: 'title 1',
-          groupValue: groupSimple,
-          onChanged: (value) {
-            setState(() {
-              groupSimple = value!;
-            });
-            print(groupSimple);
-          },
-        ),
-        RadioListTile(
-          activeColor: Color.fromARGB(255, 65, 250, 58),
-          tileColor: Colors.blue,
-          title: Text(' title 2'),
-          controlAffinity: ListTileControlAffinity.platform,
-          value: 'title 2',
-          groupValue: groupSimple,
-          onChanged: (value) {
-            setState(() {
-              groupSimple = value!;
-            });
-            print(groupSimple);
-          },
-        ),
-        RadioListTile(
-          title: Text(' title 3'),
-          controlAffinity: ListTileControlAffinity.platform,
-          activeColor: Colors.red,
-          value: 'title 3',
-          groupValue: groupSimple,
-          onChanged: (value) {
-            setState(() {
-              groupSimple = value!;
-            });
-            print(groupSimple);
-          },
-        ),
-        Text(groupSimple),
-
-         Text("CheckboxListTile #1 Checkbox Class"),
-         CheckboxListTile(
-          title: Text(' Libary'),
-          value: isChecked, 
-          onChanged: (value) {
-            setState(() {
-              
-            isChecked = value!;
-            });
-
-            
-          },)
-      ]),
-    );
+            Text('RadioListTile#1 Simple'),
+            RadioListTile(
+                title: Text('Item Title 1'),
+                tileColor: Colors.lime,
+                activeColor: Colors.deepOrangeAccent,
+                controlAffinity: ListTileControlAffinity.platform,
+                value: 'title 1',
+                groupValue: groupName,
+                onChanged: (value) {
+                  setState(() {
+                    groupName = value!;
+                  });
+                }),
+            RadioListTile(
+                title: Text('Item Title 2'),
+                controlAffinity: ListTileControlAffinity.platform,
+                value: 'title 2',
+                groupValue: groupName,
+                onChanged: (value) {
+                  setState(() {
+                    groupName = value!;
+                  });
+                }),
+            RadioListTile(
+                title: Text('Item Title 3'),
+                tileColor: Colors.pinkAccent,
+                controlAffinity: ListTileControlAffinity.platform,
+                value: 'title 3',
+                groupValue: groupName,
+                onChanged: (value) {
+                  setState(() {
+                    groupName = value!;
+                  });
+                }),
+            Text('CheckboxListTile #1'),
+            CheckboxListTile(
+              title: Text('Libary Implementation'),
+              value: Checked,
+              onChanged: ((value) {
+                setState(() {
+                  Checked = value!;
+                });
+              }),
+            ),
+          ],
+        ));
   }
-}
-
-
-class ListItem {
-  String value;
-  String name;
-
-  ListItem(this.value, this.name);
 }
